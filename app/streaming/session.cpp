@@ -1605,9 +1605,9 @@ void Session::execInternal()
     // We use only the computer name on macOS to match Apple conventions where the
     // app name is featured in the menu bar and the document name is in the title bar.
 #ifdef Q_OS_DARWIN
-    std::string windowName = QString(m_Computer->name).toStdString();
+    std::string windowName = QString(m_App.name + " - " + m_Computer->name).toStdString();
 #else
-    std::string windowName = QString(m_Computer->name + " - Moonlight").toStdString();
+    std::string windowName = QString(m_App.name + " - " + m_Computer->name + " - Moonlight").toStdString();
 #endif
 
     m_Window = SDL_CreateWindow(windowName.c_str(),
